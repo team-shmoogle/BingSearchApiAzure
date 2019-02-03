@@ -2,7 +2,7 @@
   GET request - http://HOSTNAME/shmoogleShuffle/:query
   return first 100 results shuffle
 */
-require("dotenv").load();
+
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
