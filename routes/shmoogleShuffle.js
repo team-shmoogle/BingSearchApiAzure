@@ -7,7 +7,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const _ = require("underscore");
-const SUBSCRIPTION_KEY = "6646472233094e85811b53459f2ffdad";
+const SUBSCRIPTION_KEY = process.env.APPSETING_SUBSCRIPTION_KEY;
 // TODO - Hide key in env variable on the server
 
 if (!SUBSCRIPTION_KEY) {
