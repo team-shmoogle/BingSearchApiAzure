@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const axios = require("axios");
-const request = require("request");
-
+const SENDGRID_BEARER = process.env.APPSETTING_SENDGRID_BEARER;
+const SENDGRID_LIST_ID = process.env.APPSETTING_SENDGRID_LIST_ID;
 /* {
-    "id": 6864761,
+    "id": ******,
     "name": "shmoogleUsers",
     "recipient_count": 0
 } */
@@ -14,8 +14,7 @@ const request = require("request");
 router.post("/", function(req, res) {
   let email = req.body.email;
   let headers = {
-    Authorization:
-      "Bearer ***REMOVED***",
+    Authorization: "Bearer " + SENDGRID_BEARER,
     "Content-Type": "application/x-www-form-urlencoded"
   };
   let newUserQuery = [
@@ -24,9 +23,9 @@ router.post("/", function(req, res) {
     }
   ];
 
-  let listId = 6864761;
-  /* Create New User sendGris */
+  let listId = SENDGRID_LIST_ID;
 
+  /* Create New User sendGris */
   axios
     .post("https://api.sendgrid.com/v3/contactdb/recipients", newUserQuery, {
       headers: headers
